@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show list of patients for today
      *
      * @return \Illuminate\Http\Response
      */
