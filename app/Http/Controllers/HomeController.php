@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Session;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sessions = Session::whereDate('s_date', date("Y-m-d"))->join('patients', 'sessions.user_id', '=', 'patients.id')->get();
+        return view('home', ['sessions' => $sessions]);
     }
 }
