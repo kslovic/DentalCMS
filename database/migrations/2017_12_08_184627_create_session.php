@@ -17,7 +17,7 @@ class CreateSession extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->longText('description')->nullable();
-            $table->timestamp('s_date');
+            $table->timestamp('s_date')->nullable();
             $table->foreign('user_id')->references('id')->on('users') ->onDelete('cascade');
         });
 
