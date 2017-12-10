@@ -44,6 +44,17 @@ class PatientsController extends Controller
     {
         $patient = Patient::where('id',$request->id)->delete();
     }
+
+    public function patientProfile()
+    {
+        return view('patientprofile');
+    }
+
+    public function patientList()
+    {
+        return view('patientlist');
+    }
+
     // show patient
     public function showPatient(Request $request)
     {

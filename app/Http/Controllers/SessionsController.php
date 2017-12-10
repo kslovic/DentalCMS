@@ -44,6 +44,12 @@ class SessionsController extends Controller
     {
         $session = Session::where('id',$request->id)->delete();
     }
+
+    public function sessionSchedule()
+    {
+        return view('sessionschedule');
+    }
+
     // show session
     public function showSession(Request $request)
     {
