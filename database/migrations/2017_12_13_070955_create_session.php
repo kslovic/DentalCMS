@@ -18,7 +18,7 @@ class CreateSession extends Migration
             $table->integer('patient_id')->unsigned();
             $table->longText('description')->nullable();
             $table->timestamp('s_date')->nullable();
-            $table->foreign('patient_id')->references('id')->on('users') ->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients') ->onDelete('cascade');
         });
 
     }
