@@ -68,6 +68,14 @@ class SessionsController extends Controller
         $sessionlist = Session::join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         return view('sessionschedule', ['sessionlist' => $sessionlist]);
     }
+    public function sessionSchedulePost(Request $request)
+    {
+        $request->validate([
+        'date' => 'required|date',
+    ]);
+        $sessionlist = Session::whereDate('s_date', $request->date)->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        return view('sessionschedule', ['sessionlist' => $sessionlist]);
+    }
 
     // show session
     public function showSession(Request $request)

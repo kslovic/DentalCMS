@@ -19,8 +19,7 @@ Route::post('/addpatient', 'PatientsController@addpatient')->name('addpatient');
 Route::post('/editpatient', 'PatientsController@editpatient')->name('editpatient');
 Route::post('/deletepatient', 'PatientsController@deletepatient')->name('deletepatient');
 Route::get('/addpatientform', 'PatientsController@addpatientform')->name('addpatientform');
-Route::get('/editpatientform', 'PatientsController@editpatientform')->name('editpatientform');
-Route::get('/showpatient', 'PatientsController@showpatient')->name('showpatient');
+Route::post('/editpatientform', 'PatientsController@editpatientform')->name('editpatientform');
 
 Route::post('/addsession', 'SessionsController@addsession')->name('addsession');
 Route::post('/editsession', 'SessionsController@editsession')->name('editsession');
@@ -31,6 +30,7 @@ Route::get('/editsessionform', 'SessionsController@editsessionform')->name('edit
 Route::get('/showsession', 'SessionsController@showsession')->name('showsession');
 
 Route::get('/sessionschedule', 'SessionsController@sessionschedule')->name('sessionschedule');
+Route::post('/sessionschedule', 'SessionsController@sessionschedulepost')->name('sessionschedulepost');
 Route::get('/patientlist', 'PatientsController@patientlist')->name('patientlist');
 Route::post('/patientlist', 'PatientsController@patientlistpost')->name('patientlistpost');
 Route::post('/patientprofile', 'PatientsController@patientprofile')->name('patientprofile');

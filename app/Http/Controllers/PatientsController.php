@@ -48,12 +48,21 @@ class PatientsController extends Controller
     public function editPatientForm(Request $request)
     {
         $patient = Patient::where('id',$request->id)->get();
-        return view('addpatient', $patient);
+        return view('addpatient', ['patients'=>$patient]);
     }
     // edit existing patient
     public function editPatient(Request $request)
     {
-
+        $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits_between:9,15',
+        ]);
+        Patient::where('id',$request->id)->update(['name' => $request->name, 'lname' => $request->lastname, 'email' => $request->email, 'phone' =>$request->phone]);
+        $patient = Patient::where('id',$request->id)->get();
+        $sessions = Session::where('patient_id',$request->id)->get();
+        return view('patientprofile', ['patients'=>$patient, 'sessionlist'=>$sessions]);
     }
     // delete patient
     public function deletePatient(Request $request)

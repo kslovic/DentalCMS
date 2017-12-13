@@ -63,7 +63,14 @@
 
                                     </tbody>
                                 </table>
-                                <a href="#" class="pull-right btn btn-primary">Izmjeni podatke</a>
+                                <form class="form-horizontal" method="post" action="{{url("/editpatientform")}}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="id" value={{$patient->id}} />
+                                    <button class="pull-right btn btn-primary" name="submit" type="submit">
+                                                        <span
+                                                                class="pull-right-md">Izmjeni podatke< &nbsp;- &nbsp;</span></a>
+                                    </button>
+                                </form>
                             </div>
                         </div>
 

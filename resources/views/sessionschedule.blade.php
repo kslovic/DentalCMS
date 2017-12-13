@@ -28,7 +28,8 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <form class="form-horizontal" method="post">
+                    <form class="form-horizontal" method="post" action="{{url("/sessionschedule")}}">
+                        {{ csrf_field() }}
                         <div class="form-group ">
                             <label class="control-label col-sm-2" for="date">
                                 Unesite datum
