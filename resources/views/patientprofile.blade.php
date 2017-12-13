@@ -2,14 +2,13 @@
 
 @section('content')
     <div id="page-wrapper">
-
+        @foreach($patients as $patient)
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-header">
                         Podatci pacijenta:
-                        <small>(Ime pacijenta)</small>
+                        <small>{{$patient->name}}</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li>
@@ -39,27 +38,26 @@
                                     <tbody>
                                     <tr>
                                         <td>Ime</td>
-                                        <td>Anal</td>
+                                        <td>{{$patient->name}}</td>
                                     </tr>
                                     <tr>
                                         <td>Prezime</td>
-                                        <td>Mandica</td>
+                                        <td>{{$patient->lname}}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td>analmandica@gmail.com</td>
+                                        <td>{{$patient->email}}</td>
                                     </tr>
                                     <tr>
                                         <td>Broj telefona</td>
-                                        <td>+385225883</td>
+                                        <td>{{$patient->phone}}</td>
                                     </tr>
                                     <tr>
                                         <td>Opis zahvata</td>
                                         <td><ul class="list-group">
-                                                <li class="list-group-item">Zahvat 1</li>
-                                                <li class="list-group-item">Zahvat 1</li>
-                                                <li class="list-group-item">Zahvat 1</li>
-                                                <li class="list-group-item">Zahvat 1</li>
+                                                @foreach($sessionlist as $sessionitem)
+                                                <li class="list-group-item">{{$sessionitem->description}}</li>
+                                                @endforeach
                                             </ul></td>
                                     </tr>
 
@@ -118,6 +116,7 @@
             {{--</div>--}}
 
         </div>
+                    @endforeach
         <!-- /#page-wrapper -->
     </div>
 @endsection

@@ -15,10 +15,10 @@ class CreateSession extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('patient_id')->unsigned();
             $table->longText('description')->nullable();
             $table->timestamp('s_date')->nullable();
-            $table->foreign('user_id')->references('id')->on('users') ->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('users') ->onDelete('cascade');
         });
 
     }

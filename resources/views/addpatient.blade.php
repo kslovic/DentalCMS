@@ -26,7 +26,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" action="{{url("/addpatient")}}">
+                            {{ csrf_field() }}
                             <div class="form-group ">
                                 <label class="control-label col-sm-3" for="name">
                                     Ime

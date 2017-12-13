@@ -30,7 +30,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" action="{{url("/patientlist")}}">
+                            {{ csrf_field() }}
                             <div class="form-group ">
                                 <label class="control-label col-sm-2" for="name">
                                     Ime
@@ -66,6 +67,7 @@
                             <h3>Popis pacijenata</h3>
                             <table class="table table-filter">
                                 <tbody>
+                                @foreach($patients as $patient)
                                 <tr>
                                     <td>
                                         <div class="media">
@@ -73,99 +75,32 @@
                                                 <img src="http://via.placeholder.com/128x128" class="media-photo">
                                             </a>
                                             <div class="media-body">
-                                                <a href="{{url("/patientprofile")}}"><span
-                                                            class="pull-right-md">Otvori za više detalja</span></a>
-                                                <a href="#"><span
-                                                            class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
+                                                <form class="form-horizontal" method="post" action="{{url("/patientprofile")}}">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="id" value={{$patient->id}} >
+                                                    <button class="btn btn-primary pull-right-md" name="submit" type="submit">
+                                                        <span
+                                                                class="pull-right-md">Otvori za više detalja &nbsp;- &nbsp;</span></a>
+                                                    </button>
+                                                </form>
+                                                <form class="form-horizontal" method="post" action="{{url("/addsessionform")}}">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="id" value={{$patient->id}} >
+                                                    <button class="btn btn-primary pull-right-md" name="submit" type="submit">
+                                                        <span
+                                                                class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
+                                                    </button>
+                                                </form>
                                                 <br class="hide-md">
-                                                <p class="summary"><strong>Ime: </strong></p>
-                                                <p class="summary"><strong>Prezime: </strong></p>
-                                                <p class="summary"><strong>Email: </strong></p>
-                                                <p class="summary"><strong>Broj telefona: </strong></p>
+                                                <p class="summary"><strong>Ime: </strong>{{$patient->name}}</p>
+                                                <p class="summary"><strong>Prezime: </strong>{{$patient->lname}}</p>
+                                                <p class="summary"><strong>Email: </strong>{{$patient->email}}</p>
+                                                <p class="summary"><strong>Broj telefona: </strong>{{$patient->phone}}</p>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="{{url("/patientprofile")}}"><span
-                                                            class="pull-right-md">Otvori za više detalja</span></a>
-                                                <a href="#"><span
-                                                            class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
-                                                <br class="hide-md">
-                                                <p class="summary"><strong>Ime: </strong></p>
-                                                <p class="summary"><strong>Prezime: </strong></p>
-                                                <p class="summary"><strong>Email: </strong></p>
-                                                <p class="summary"><strong>Broj telefona: </strong></p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="{{url("/patientprofile")}}"><span
-                                                            class="pull-right-md">Otvori za više detalja</span></a>
-                                                <a href="#"><span
-                                                            class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
-                                                <br class="hide-md">
-                                                <p class="summary"><strong>Ime: </strong></p>
-                                                <p class="summary"><strong>Prezime: </strong></p>
-                                                <p class="summary"><strong>Email: </strong></p>
-                                                <p class="summary"><strong>Broj telefona: </strong></p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="{{url("/patientprofile")}}"><span
-                                                            class="pull-right-md">Otvori za više detalja</span></a>
-                                                <a href="#"><span
-                                                            class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
-                                                <br class="hide-md">
-                                                <p class="summary"><strong>Ime: </strong></p>
-                                                <p class="summary"><strong>Prezime: </strong></p>
-                                                <p class="summary"><strong>Email: </strong></p>
-                                                <p class="summary"><strong>Broj telefona: </strong></p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="{{url("/patientprofile")}}"><span
-                                                            class="pull-right-md">Otvori za više detalja</span></a>
-                                                <a href="#"><span
-                                                            class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
-                                                <br class="hide-md">
-                                                <p class="summary"><strong>Ime: </strong></p>
-                                                <p class="summary"><strong>Prezime: </strong></p>
-                                                <p class="summary"><strong>Email: </strong></p>
-                                                <p class="summary"><strong>Broj telefona: </strong></p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

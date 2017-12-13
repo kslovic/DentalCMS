@@ -11,7 +11,7 @@
                     <h1 class="page-header">
                         Današnji termini
                         <br class="hide-md">
-                        <small>(ovdje dodat datum)</small>
+                        <small>{{date("d/m/Y")}}</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li>
@@ -32,6 +32,7 @@
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody>
+                                @foreach($sessions as $sessionitem)
                                 <tr>
                                     <td>
                                         <div class="media">
@@ -39,84 +40,18 @@
                                                 <img src="http://via.placeholder.com/128x128" class="media-photo">
                                             </a>
                                             <div class="media-body">
-                                                <span class="pull-right-md">Vrijeme termina: 14:30h</span>
+                                                <span class="pull-right-md">Vrijeme termina: {{$sessionitem->s_date}}</span>
                                                 <br class="hide-md">
                                                 <h4 class="title">
-                                                    Ime i prezime pacijenta
+                                                    {{$sessionitem->name}}
+                                                    {{$sessionitem->lname}}
                                                 </h4>
-                                                <p class="summary"><strong>Opis: </strong>Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                                <p class="summary"><strong>Opis: </strong>{{$sessionitem->description}}</p>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="pull-right-md">Vrijeme termina: 14:30h</span>
-                                                <br class="hide-md">
-                                                <h4 class="title">
-                                                    Ime i prezime pacijenta
-                                                </h4>
-                                                <p class="summary"><strong>Opis: </strong>Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="pull-right-md">Vrijeme termina: 14:30h</span>
-                                                <br class="hide-md">
-                                                <h4 class="title">
-                                                    Ime i prezime pacijenta
-                                                </h4>
-                                                <p class="summary"><strong>Opis: </strong>Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="pull-right-md">Vrijeme termina: 14:30h</span>
-                                                <br class="hide-md">
-                                                <h4 class="title">
-                                                    Ime i prezime pacijenta
-                                                </h4>
-                                                <p class="summary"><strong>Opis: </strong>Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="http://via.placeholder.com/128x128" class="media-photo">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="pull-right-md">Vrijeme termina: 14:30h</span>
-                                                <br class="hide-md">
-                                                <h4 class="title">
-                                                    Ime i prezime pacijenta
-                                                </h4>
-                                                <p class="summary"><strong>Opis: </strong>Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

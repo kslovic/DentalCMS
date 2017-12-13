@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Session;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
@@ -23,10 +23,28 @@ class SessionsController extends Controller
     {
         return view('addsession');
     }
+    public function addSessionFormPost(Request $request)
+    {
+        $id = $request->id;
+        return view('addsession', ['id' => $id]);
+    }
     //add new session
     public function addSession(Request $request)
     {
+        $request->validate([
+            'id' => 'required|numeric',
+            'date' => 'required|date',
+            'description' => 'max:2000',
+        ]);
+        $newsession = new Session();
 
+        $newsession->patient_id = $request->id;
+        $newsession->s_date = $request->date;
+        $newsession->description = $request->description;
+
+        $newsession->save();
+
+        return redirect('sessionschedule');
     }
     // show edit new session form
     public function editSessionForm(Request $request)
@@ -47,7 +65,8 @@ class SessionsController extends Controller
 
     public function sessionSchedule()
     {
-        return view('sessionschedule');
+        $sessionlist = Session::join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        return view('sessionschedule', ['sessionlist' => $sessionlist]);
     }
 
     // show session

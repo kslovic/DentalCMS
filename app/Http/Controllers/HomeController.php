@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sessions = Session::whereDate('s_date', date("Y-m-d"))->join('patients', 'sessions.user_id', '=', 'patients.id')->get();
+        $sessions = Session::whereDate('s_date', date("Y-m-d"))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         return view('home', ['sessions' => $sessions]);
     }
 }
