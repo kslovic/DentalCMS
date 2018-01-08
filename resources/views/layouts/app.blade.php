@@ -46,11 +46,11 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 @guest
-                    <li class="active">
+                    <li {{{ (Request::is('/') ? 'class=active' : '') }}}>
                         <a href="{{ url('/') }}"><i class="fa fa-fw fa-home"></i> Prijava</a>
                     </li>
                 @else
-                    <li class="active">
+                    <li {{{ (Request::is('/') ? 'class=active' : '') }}}>
                         <a href="{{ url('/') }}"><i class="fa fa-fw fa-home"></i> Današnji termini</a>
                     </li>
                     <li>

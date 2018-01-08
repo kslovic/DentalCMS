@@ -28,33 +28,52 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <form class="form-horizontal" method="post" action="{{url("/addsession")}}">
                             {{ csrf_field() }}
-                            <div class="form-group ">
+                            <div class="form-group hidden">
                                 <label class="control-label col-sm-3" for="id">
                                     Id pacijenta
                                 </label>
                                 <div class="col-sm-9">
                                     <input class="form-control" name="id" type="number"
-                                    @if(isset($id))
-                                    value={{$id}}
-                                    @endif
+                                           @if(isset($id))
+                                           value={{$id}}
+                                            @endif
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-sm-3" for="name">
+                                    Ime
+                                </label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" name="name" type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="control-label col-sm-3" for="lastname">
+                                    Prezime
+                                </label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" name="name" type="text"
                                     />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3 requiredField" for="date" >
+                                <label class="control-label col-sm-3 requiredField" for="date">
                                     Datum i vrijeme
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control input-append date form_datetime" name="date" placeholder="Kliki ovdje za dodati datum"
+                                    <input class="form-control input-append date form_datetime" name="date"
+                                           placeholder="Kliki ovdje za dodati datum"
                                            type="text"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3 requiredField" for="date" >
+                                <label class="control-label col-sm-3 requiredField" for="date">
                                     Opis zahvata
                                 </label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" cols="40"name="description" rows="4"></textarea>
+                                    <textarea class="form-control" cols="40" name="description" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

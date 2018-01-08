@@ -72,6 +72,10 @@
                                                 </h4>
                                                 <p class="summary"><strong>Opis: </strong>{{$sessionitem->description}}</p>
                                             </div>
+                                            <button class="pull-right btn btn-primary" name="submit" type="submit">
+                                                        <span
+                                                                class="pull-right-md">Izmjeni termin</span>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>

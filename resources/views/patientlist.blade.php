@@ -80,7 +80,7 @@
                                                     <input type="hidden" name="id" value={{$patient->id}} >
                                                     <button class="btn btn-primary pull-right-md" name="submit" type="submit">
                                                         <span
-                                                                class="pull-right-md">Otvori za više detalja &nbsp;- &nbsp;</span></a>
+                                                                class="pull-right-md">Otvori za više detalja</span>
                                                     </button>
                                                 </form>
                                                 <form class="form-horizontal" method="post" action="{{url("/addsessionform")}}">
@@ -88,7 +88,7 @@
                                                     <input type="hidden" name="id" value={{$patient->id}} >
                                                     <button class="btn btn-primary pull-right-md" name="submit" type="submit">
                                                         <span
-                                                                class="pull-right-md">Rezerviraj termin &nbsp;- &nbsp;</span></a>
+                                                                class="pull-right-md">Rezerviraj termin</span>
                                                     </button>
                                                 </form>
                                                 <br class="hide-md">
