@@ -28,11 +28,11 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <form class="form-horizontal" method="post" action="{{url("/addsession")}}">
                             {{ csrf_field() }}
-                                    <input class="form-control" name="id" type="hidden"
-                                           @if(isset($id))
-                                           value={{$id}}
-                                            @endif
-                                    />
+                            <input class="form-control" name="id" type="hidden"
+                                   @if(isset($id))
+                                   value={{$id}}
+                                    @endif
+                            />
                             <div class="form-group ">
                                 <label class="control-label col-sm-3" for="name">
                                     Ime
@@ -70,10 +70,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-10 col-sm-offset-3">
-                                    <button class="btn btn-primary " name="submit" type="submit">
-                                        Potvrdi
-                                    </button>
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <button class="btn btn-primary " name="submit" type="submit">
+                                            Izmjeni
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-2 col-sm-offset-1">
+                                        <button class="btn btn-primary " name="submit" type="submit">
+                                            Obriši termin
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

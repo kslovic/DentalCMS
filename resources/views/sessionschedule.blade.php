@@ -74,7 +74,7 @@
                                             </div>
                                             <button class="pull-right btn btn-primary" name="submit" type="submit">
                                                         <span
-                                                                class="pull-right-md">Izmjeni termin</span>
+                                                                class="pull-right-md">Izmjeni podatke</span>
                                             </button>
                                         </div>
                                     </td>

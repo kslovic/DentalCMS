@@ -57,10 +57,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#termini"><i
                                     class="fa fa-fw fa-clock-o"></i> Termini<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="termini" class="collapse">
-                            <li>
-                                <a href="{{url("/addsessionform")}}"><i
-                                            class="fa fa-fw fa-calendar-check-o"></i> Rezerviraj termin</a>
-                            </li>
+                            {{--<li>--}}
+                                {{--<a href="{{url("/addsessionform")}}"><i--}}
+                                            {{--class="fa fa-fw fa-calendar-check-o"></i> Rezerviraj termin</a>--}}
+                            {{--</li>--}}
                             <li>
                                 <a href="{{url("/sessionschedule")}}"><i
                                             class="fa fa-fw fa-calendar"></i> Pregled termina</a>
