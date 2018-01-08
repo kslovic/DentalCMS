@@ -67,7 +67,8 @@ class PatientsController extends Controller
     // delete patient
     public function deletePatient(Request $request)
     {
-        $patient = Patient::where('id',$request->id)->delete();
+        Patient::where('id',$request->id)->delete();
+        return redirect('patientlist');
     }
 
     public function patientProfile(Request $request)

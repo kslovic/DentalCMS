@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Patient;
 use App\Session;
 use Illuminate\Http\Request;
 
@@ -49,23 +50,39 @@ class SessionsController extends Controller
     // show edit new session form
     public function editSessionForm(Request $request)
     {
-        $session = Session::where('id',$request->id)->get();
-        return view('addsession', $session);
+        $session = Session::where('id',$request->session_id)->get();
+        $patient = array();
+        foreach ($session as $psession) {
+            $patient = Patient::where('id', $psession->patient_id)->get();
+        }
+        return view('editsession', ['session'=>$session,'patient'=>$patient]);
     }
     //edit session
     public function editSession(Request $request)
     {
-
+        $request->validate([
+            'session_id' => 'required|numeric',
+            'date' => 'required|date',
+            'description' => 'max:2000',
+        ]);
+        Session::where('id',$request->session_id)->update(['s_date' => $request->date, 'description' => $request->description]);
+        $session = Session::where('id',$request->session_id)->get();
+        $patient = array();
+        foreach ($session as $psession) {
+            $patient = Patient::where('id', $psession->patient_id)->get();
+        }
+        return view('editsession', ['session'=>$session,'patient'=>$patient]);
     }
     //delete session
     public function deleteSession(Request $request)
     {
-        $session = Session::where('id',$request->id)->delete();
+        Session::where('id',$request->session_id)->delete();
+        return redirect('sessionschedule');
     }
 
     public function sessionSchedule()
     {
-        $sessionlist = Session::join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         return view('sessionschedule', ['sessionlist' => $sessionlist]);
     }
     public function sessionSchedulePost(Request $request)
@@ -73,14 +90,7 @@ class SessionsController extends Controller
         $request->validate([
         'date' => 'required|date',
     ]);
-        $sessionlist = Session::whereDate('s_date', $request->date)->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->whereDate('s_date', $request->date)->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         return view('sessionschedule', ['sessionlist' => $sessionlist]);
-    }
-
-    // show session
-    public function showSession(Request $request)
-    {
-        $session = Session::where('id',$request->id)->get();
-        return view('showsession', $session);
     }
 }

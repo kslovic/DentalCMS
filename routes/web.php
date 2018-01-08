@@ -26,7 +26,7 @@ Route::post('/editsession', 'SessionsController@editsession')->name('editsession
 Route::post('/deletesession', 'SessionsController@deletesession')->name('deletesession');
 Route::get('/addsessionform', 'SessionsController@addsessionform')->name('addsessionform');
 Route::post('/addsessionform', 'SessionsController@addsessionformpost')->name('addsessionformpost');
-Route::get('/editsessionform', 'SessionsController@editsessionform')->name('editsessionform');
+Route::post('/editsessionform', 'SessionsController@editsessionform')->name('editsessionform');
 Route::get('/showsession', 'SessionsController@showsession')->name('showsession');
 
 Route::get('/sessionschedule', 'SessionsController@sessionschedule')->name('sessionschedule');

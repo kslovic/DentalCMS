@@ -68,7 +68,9 @@
 
                                         </tbody>
                                     </table>
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" method="post" action="{{url("/deletepatient")}}">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="id" value={{$patient->id}} />
                                         <button class="pull-right btn btn-primary" name="submit" type="submit">
                                                         <span
                                                                 class="pull-right-md">Obriši pacijenta</span>
