@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Validator;
 use App\Patient;
 use App\Session;
 use Illuminate\Http\Request;
@@ -20,23 +20,24 @@ class SessionsController extends Controller
         $this->middleware('auth');
     }
     // show add new patient form
-    public function addSessionForm()
-    {
-        return view('addsession');
-    }
     public function addSessionFormPost(Request $request)
     {
         $id = $request->id;
-        return view('addsession', ['id' => $id]);
+        $patient = Patient::where('id', $id)->first();
+        return view('addsession', ['id' => $id, 'name'=> $patient['name'], 'lname' => $patient['lname']]);
     }
     //add new session
     public function addSession(Request $request)
     {
-        $request->validate([
-            'id' => 'required|numeric',
+        $id = $request->id;
+        $validator = Validator::make($request->all(),[
             'date' => 'required|date',
             'description' => 'max:2000',
         ]);
+        if($validator->fails()){
+            $patient = Patient::where('id', $id)->first();
+            return view('addsession', ['id' => $id, 'name'=> $patient['name'], 'lname' => $patient['lname']]);
+        }
         $newsession = new Session();
 
         $newsession->patient_id = $request->id;
@@ -82,7 +83,7 @@ class SessionsController extends Controller
 
     public function sessionSchedule()
     {
-        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->join('patients', 'sessions.patient_id', '=', 'patients.id')->orderBy('s_date','desc')->simplePaginate(10);
         return view('sessionschedule', ['sessionlist' => $sessionlist]);
     }
     public function sessionSchedulePost(Request $request)
@@ -90,7 +91,7 @@ class SessionsController extends Controller
         $request->validate([
         'date' => 'required|date',
     ]);
-        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->whereDate('s_date', $request->date)->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
-        return view('sessionschedule', ['sessionlist' => $sessionlist]);
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->whereDate('s_date', $request->date)->join('patients', 'sessions.patient_id', '=', 'patients.id')->orderBy('s_date','asc')->get();
+        return view('sessionschedule', ['sessionlist' => $sessionlist, 'date' => $request->date]);
     }
 }

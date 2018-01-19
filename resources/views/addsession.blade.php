@@ -38,8 +38,7 @@
                                     Ime
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="name" type="text"
-                                    />
+                                    <label class="form-control" name="name" type="text">{{$name}}</label>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -47,8 +46,7 @@
                                     Prezime
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="name" type="text"
-                                    />
+                                    <label class="form-control" name="name" type="text">{{$lname}}</label>
                                 </div>
                             </div>
                             <div class="form-group">

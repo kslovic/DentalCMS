@@ -52,8 +52,9 @@
                 <section class="content">
                     <div class="col-md-12">
                         <div class="table-container">
-                            <h3>Rezultati pretrage: <small>(Navedeni datum)</small></h3>
-
+                            @if(isset($date))
+                            <h3>Rezultati pretrage: <small>{{$date}}</small></h3>
+                            @endif
                             <table class="table table-filter">
                                 <tbody>
                                 @foreach($sessionlist as $sessionitem)
@@ -94,4 +95,9 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+    @if(!isset($date))
+    <div align = "center">
+    {{ $sessionlist->links() }}
+    </div>
+    @endif
 @endsection

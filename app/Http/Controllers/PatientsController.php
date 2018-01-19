@@ -30,7 +30,6 @@ class PatientsController extends Controller
         $request->validate([
             'name' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:patients',
             'phone' => 'required|digits_between:9,15',
         ]);
         $patient = new Patient();
@@ -56,7 +55,6 @@ class PatientsController extends Controller
         $request->validate([
             'name' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email',
             'phone' => 'required|digits_between:9,15',
         ]);
         Patient::where('id',$request->id)->update(['name' => $request->name, 'lname' => $request->lastname, 'email' => $request->email, 'phone' =>$request->phone]);
@@ -80,15 +78,19 @@ class PatientsController extends Controller
 
     public function patientList()
     {
-        $patients = Patient::all();
+        $patients = Patient::simplePaginate(10);
         return view('patientlist', ['patients' => $patients]);
     }
     public function patientListPost(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+        ]);
         $name = $request->name;
         $lname = $request->lastname;
         $patients = Patient::where('name',$name)->where('lname',$lname)->get();
-        return view('patientlist', ['patients' => $patients]);
+        return view('patientlist', ['patients' => $patients, 'name' => $name, 'lname' => $lname]);
     }
 
 

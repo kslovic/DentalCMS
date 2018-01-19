@@ -17,7 +17,7 @@ class CreatePatient extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('lname');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('phone');
             $table->timestamps();
         });

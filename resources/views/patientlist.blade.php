@@ -21,11 +21,7 @@
                     </ol>
                 </div>
             </div>
-            <!-- /.row -->
-
-            <h3>Pretraga</h3>
             <hr>
-
 
             <div class="container-fluid">
                 <div class="row">
@@ -37,7 +33,7 @@
                                     Ime
                                 </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="name" type="text"/>
+                                    <input class="form-control" name="name" type="text" required/>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -45,7 +41,7 @@
                                     Prezime
                                 </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="lastname" type="text"/>
+                                    <input class="form-control" name="lastname" type="text" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -59,7 +55,9 @@
                     </div>
                 </div>
             </div>
-
+            @if(isset($name)&&isset($lname))
+            <h3>Pretraga: {{$name}} {{$lname}}</h3>
+            @endif
             <div class="row">
                 <section class="content">
                     <div class="col-md-12">
@@ -111,4 +109,9 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+    @if(!isset($name)&&!isset($lname))
+        <div align = "center">
+            {{ $patients->links() }}
+        </div>
+    @endif
 @endsection

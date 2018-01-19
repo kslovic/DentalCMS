@@ -60,7 +60,7 @@
                                             <td>
                                                 <ul class="list-group">
                                                     @foreach($sessionlist as $sessionitem)
-                                                        <li class="list-group-item">{{$sessionitem->description}}</li>
+                                                        <li class="list-group-item">{{$sessionitem->description}}<div align="right"> {{$sessionitem->s_date}}</div></li>
                                                     @endforeach
                                                 </ul>
                                             </td>
