@@ -39,7 +39,7 @@
                                         Ime
                                     </label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="name" type="text"/>
+                                        <input class="form-control" name="name" type="text" required/>
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -47,7 +47,7 @@
                                         Prezime
                                     </label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="lastname" type="text"/>
+                                        <input class="form-control" name="lastname" type="text" required/>
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -55,7 +55,7 @@
                                         Email
                                     </label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="email" type="text"/>
+                                        <input class="form-control" name="email" type="email"/>
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -63,7 +63,7 @@
                                         Broj telefona
                                     </label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" name="phone" type="text"/>
+                                        <input class="form-control" name="phone" type="number" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -84,7 +84,7 @@
                                     Ime
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="name" type="text"  value={{$patient->name}} />
+                                    <input class="form-control" name="name" type="text"  required value={{$patient->name}} />
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -92,7 +92,7 @@
                                     Prezime
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="lastname" type="text"  value={{$patient->lname}} />
+                                    <input class="form-control" name="lastname" type="text" required  value={{$patient->lname}} />
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -100,7 +100,7 @@
                                     Email
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="email" type="text"  value={{$patient->email}} />
+                                    <input class="form-control" name="email" type="email"  @if($patient->email!=null) value={{$patient->email}} @endif />
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -108,7 +108,7 @@
                                     Broj telefona
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="phone" type="text"  value={{$patient->phone}} />
+                                    <input class="form-control" name="phone" type="number" required  value={{$patient->phone}} />
                                 </div>
                             </div>
                             <div class="form-group">

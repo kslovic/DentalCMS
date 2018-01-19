@@ -38,7 +38,7 @@
                                     Ime
                                 </label>
                                 <div class="col-sm-9">
-                                    <label class="form-control" name="name" type="text">{{$name}}</label>
+                                    <label class="form-control">{{$name}}</label>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -46,7 +46,7 @@
                                     Prezime
                                 </label>
                                 <div class="col-sm-9">
-                                    <label class="form-control" name="name" type="text">{{$lname}}</label>
+                                    <label class="form-control">{{$lname}}</label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -56,7 +56,7 @@
                                 <div class="col-sm-9">
                                     <input class="form-control input-append date form_datetime" name="date"
                                            placeholder="Kliki ovdje za dodati datum"
-                                           type="text"/>
+                                           type="text" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,7 +64,7 @@
                                     Opis zahvata
                                 </label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" cols="40" name="description" rows="4"></textarea>
+                                    <textarea class="form-control" cols="40" name="description" rows="4" maxlength="2000"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

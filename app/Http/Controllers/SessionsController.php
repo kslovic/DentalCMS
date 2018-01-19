@@ -66,7 +66,7 @@ class SessionsController extends Controller
             'date' => 'required|date',
             'description' => 'max:2000',
         ]);
-        Session::where('id',$request->session_id)->update(['s_date' => $request->date, 'description' => $request->description]);
+        Session::where('id',$request->session_id)->update(['s_date' => date("Y-m-d H:i:s",strtotime($request->date)), 'description' => $request->description]);
         $session = Session::where('id',$request->session_id)->get();
         $patient = array();
         foreach ($session as $psession) {

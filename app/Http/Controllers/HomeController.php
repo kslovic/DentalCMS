@@ -25,22 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sessions = Session::whereDate('s_date', date("Y-m-d"))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
-        $session_notifications = Session::whereDate('s_date', new DateTime('tomorrow'))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
-        foreach ($session_notifications as $session_notification) {
-            if($session_notification['email']!=null) {
-                \Mail::send('email.notify', ['name' => $session_notification['name'], 'date' => $session_notification['s_date']], function ($message) use ($session_notification) {
-                    $message->to($session_notification['email'], $session_notification['name'])
-                        ->subject('Obavijest o zakazanom terminu');
-                });
-            }
-            else{
-                \Mail::send('email.callpatient', ['name' => $session_notification['name'], 'lname' => $session_notification['lname'], 'date' => $session_notification['s_date'], 'phone' => $session_notification['phone']], function ($message) use ($session_notification) {
-                    $message->to('kslovic201294@gmail.com')
-                        ->subject('Obavijest o zakazanom terminu');
-                });
-            }
-        }
+        $sessions = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->whereDate('s_date', date("Y-m-d"))->join('patients', 'sessions.patient_id', '=', 'patients.id')->orderBy('s_date','asc')->get();
         return view('home', ['sessions' => $sessions]);
     }
 }

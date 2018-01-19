@@ -39,7 +39,7 @@
                                     Ime
                                 </label>
                                 <div class="col-sm-9">
-                                    <label class="form-control" name="name" type="text">{{$spatient->name}}</label>
+                                    <label class="form-control">{{$spatient->name}}</label>
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -47,7 +47,7 @@
                                     Prezime
                                 </label>
                                 <div class="col-sm-9">
-                                    <label class="form-control" name="lname" type="text">{{$spatient->lname}}</label>
+                                    <label class="form-control">{{$spatient->lname}}</label>
                                 </div>
                             </div>
                             @endforeach
@@ -56,9 +56,9 @@
                                     Datum i vrijeme
                                 </label>
                                 <div class="col-sm-9">
-                                    <input class="form-control input-append date form_datetime" name="date"
+                                    <input name="date"
                                            placeholder="Kliki ovdje za dodati datum"
-                                           type="text" value={{$psession->s_date}}/>
+                                           type="datetime-local" value={{date("Y-m-d\TH:i:s", strtotime($psession->s_date))}} />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@
                                     Opis zahvata
                                 </label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" cols="40" name="description" rows="4">{{$psession->description}}</textarea>
+                                    <textarea class="form-control" cols="40" name="description" rows="4" maxlength="2000">{{$psession->description}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">

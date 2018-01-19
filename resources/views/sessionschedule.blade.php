@@ -78,7 +78,7 @@
                                                 <input type="hidden" name="session_id" value={{$sessionitem->sid}} />
                                                 <button class="pull-right btn btn-primary" name="submit" type="submit">
                                                         <span
-                                                                class="pull-right-md">Izmjeni podatke</span>
+                                                                class="pull-right-md">Izmjeni termin</span>
                                             </button>
                                             </form>
                                         </div>

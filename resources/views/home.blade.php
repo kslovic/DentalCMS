@@ -48,10 +48,14 @@
                                                 </h4>
                                                 <p class="summary"><strong>Opis: </strong>{{$sessionitem->description}}</p>
                                             </div>
-                                            <button class="pull-right btn btn-primary" name="submit" type="submit">
+                                            <form class="form-horizontal" method="post" action="{{url("/editsessionform")}}">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="session_id" value={{$sessionitem->sid}} />
+                                                <button class="pull-right btn btn-primary" name="submit" type="submit">
                                                         <span
                                                                 class="pull-right-md">Izmjeni termin</span>
-                                            </button>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
