@@ -22,7 +22,11 @@
                 </div>
             </div>
             <!-- /.row -->
-
+            @if(isset($status))
+                <div class="alert alert-success">
+                    <strong>Termin uspiješno {{$status}}!</strong>
+                </div>
+            @endif
             <h3>Pretraga</h3>
             <hr>
 

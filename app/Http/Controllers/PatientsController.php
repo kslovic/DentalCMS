@@ -41,7 +41,8 @@ class PatientsController extends Controller
 
         $patient->save();
 
-        return redirect('patientlist');
+        $patients = Patient::orderBy('lname','asc')->simplePaginate(10);
+        return view('patientlist', ['patients' => $patients, 'status' => "dodan"]);
     }
     // show edit new patient form
     public function editPatientForm(Request $request)
@@ -66,7 +67,8 @@ class PatientsController extends Controller
     public function deletePatient(Request $request)
     {
         Patient::where('id',$request->id)->delete();
-        return redirect('patientlist');
+        $patients = Patient::orderBy('lname','asc')->simplePaginate(10);
+        return view('patientlist', ['patients' => $patients, 'status' => "obrisan"]);
     }
 
     public function patientProfile(Request $request)
@@ -78,7 +80,7 @@ class PatientsController extends Controller
 
     public function patientList()
     {
-        $patients = Patient::simplePaginate(10);
+        $patients = Patient::orderBy('lname','asc')->simplePaginate(10);
         return view('patientlist', ['patients' => $patients]);
     }
     public function patientListPost(Request $request)

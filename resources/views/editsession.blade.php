@@ -4,7 +4,6 @@
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-header">
@@ -21,6 +20,11 @@
                     </ol>
                 </div>
             </div>
+            @if(isset($edited))
+                <div class="alert alert-success">
+                    <strong>Termin uspiješno uređen!</strong>
+                </div>
+            @endif
             <!-- /.row -->
             @foreach($session as $psession)
             <div class="container-fluid">

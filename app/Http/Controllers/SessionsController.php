@@ -46,7 +46,8 @@ class SessionsController extends Controller
 
         $newsession->save();
 
-        return redirect('sessionschedule');
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->join('patients', 'sessions.patient_id', '=', 'patients.id')->orderBy('s_date','desc')->simplePaginate(10);
+        return view('sessionschedule', ['sessionlist' => $sessionlist, 'status' => "dodan"]);
     }
     // show edit new session form
     public function editSessionForm(Request $request)
@@ -72,13 +73,14 @@ class SessionsController extends Controller
         foreach ($session as $psession) {
             $patient = Patient::where('id', $psession->patient_id)->get();
         }
-        return view('editsession', ['session'=>$session,'patient'=>$patient]);
+        return view('editsession', ['session'=>$session,'patient'=>$patient, 'edited' => true]);
     }
     //delete session
     public function deleteSession(Request $request)
     {
         Session::where('id',$request->session_id)->delete();
-        return redirect('sessionschedule');
+        $sessionlist = Session::select('sessions.id AS sid','patients.id AS pid', 's_date', 'description', 'name', 'lname')->join('patients', 'sessions.patient_id', '=', 'patients.id')->orderBy('s_date','desc')->simplePaginate(10);
+        return view('sessionschedule', ['sessionlist' => $sessionlist, 'status' => "obrisan"]);
     }
 
     public function sessionSchedule()

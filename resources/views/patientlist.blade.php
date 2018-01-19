@@ -22,7 +22,11 @@
                 </div>
             </div>
             <hr>
-
+            @if(isset($status))
+                <div class="alert alert-success">
+                    <strong>Pacijent uspiješno {{$status}}!</strong>
+                </div>
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
