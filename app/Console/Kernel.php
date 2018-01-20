@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\CMSConfig;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('send:notification')->timezone('Europe/Zagreb')->dailyAt('00:00');
+        $config = CMSConfig::first();
+        $schedule->command('send:notification')->timezone('Europe/Zagreb')->dailyAt(date("H:i",strtotime($config->time)));
     }
 
     /**

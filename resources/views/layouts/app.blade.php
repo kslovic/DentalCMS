@@ -87,6 +87,9 @@
                                     class="fa fa-fw fa-user"></i> Korisnik<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="korisnik" class="collapse">
                             <li>
+                                <a href="{{ route('setup') }}">Postavke</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

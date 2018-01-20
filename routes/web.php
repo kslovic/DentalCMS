@@ -14,6 +14,8 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/settings', 'HomeController@setup')->name('setup');
+Route::post('/settingspost', 'HomeController@postsetup')->name('postsetup');
 
 Route::post('/addpatient', 'PatientsController@addpatient')->name('addpatient');
 Route::post('/editpatient', 'PatientsController@editpatient')->name('editpatient');
