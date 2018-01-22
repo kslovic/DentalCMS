@@ -75,8 +75,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-6 col-sm-offset-3">
-                                        <button class="btn btn-primary " name="submit" type="submit">
+                                    <div class="col-sm-4 col-sm-offset-8">
+                                        <button class="btn btn-primary btn-block" name="submit" type="submit">
                                             Izmjeni
                                         </button>
                                     </div>
@@ -84,13 +84,18 @@
                             </div>
                         </form>
                         <form class="form-horizontal" method="post" action="{{url("/deletesession")}}">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="session_id" value={{$psession->id}} />
-                            <div class="col-sm-2 col-sm-offset-1">
-                                <button class="btn btn-primary " name="submit" type="submit">
-                                    Obriši termin
-                                </button>
+                          <div class="form-group">
+                            <div class="row">
+                              <div class="col-sm-4 col-sm-offset-8">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="session_id" value={{$psession->id}} />
+                                    <button class="btn btn-primary btn-block" name="submit" type="submit">
+                                        Obriši termin
+                                    </button>
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </form>
                     </div>
                 </div>

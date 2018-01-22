@@ -68,10 +68,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-10 col-sm-offset-3">
-                                    <button class="btn btn-primary " name="submit" type="submit">
-                                        Potvrdi
-                                    </button>
+                                <div class="row">
+                                  <div class="col-sm-4 col-sm-offset-8">
+                                      <button class="btn btn-primary btn-block " name="submit" type="submit">
+                                          Potvrdi
+                                      </button>
+                                  </div>
                                 </div>
                             </div>
                         </form>

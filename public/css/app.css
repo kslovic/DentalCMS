@@ -8688,6 +8688,10 @@ ul.alert-dropdown {
   padding: 1rem;
 }
 
+.media-photo {
+  border-radius: 50%;
+}
+
 /*!
  * Datetimepicker for Bootstrap
  *
