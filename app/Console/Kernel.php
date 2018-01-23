@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $config = CMSConfig::first();
+        \Log::info("was here");
         $schedule->command('send:notification')->timezone('Europe/Zagreb')->dailyAt(date("H:i",strtotime($config->time)));
     }
 
