@@ -32,7 +32,7 @@ class SchedulerDaemon extends Command
         while (true) {
             $this->line('<info>[' . Carbon::now()->format('Y-m-d H:i:s') . ']</info> Calling scheduler');
 
-            $this->call('schedule:run');
+            $this->call('php artisan schedule:run');
 
             sleep($this->option('sleep'));
         }
