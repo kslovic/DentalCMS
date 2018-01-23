@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         $config = CMSConfig::first();
         \Log::info("was here");
-        $schedule->command('send:notification')->timezone('Europe/Zagreb')->dailyAt(date("H:i",strtotime($config->time)));
+        $schedule->call('send:notification')->timezone('Europe/Zagreb')->dailyAt(date("H:i",strtotime($config->time)));
     }
 
     /**
