@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         $config = CMSConfig::first();
         \Log::info("was here");
-        $schedule->call('send:notification');
+        $schedule->command('send:notification');
     }
 
     /**
