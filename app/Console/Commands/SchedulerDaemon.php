@@ -32,7 +32,7 @@ class SchedulerDaemon extends Command
         while (true) {
             $this->line('<info>[' . Carbon::now()->format('Y-m-d H:i:s') . ']</info> Calling scheduler');
 
-            $this->exec('php artisan schedule:run');
+            $this->exec('heroku run php artisan schedule:run');
 
             sleep($this->option('sleep'));
         }
