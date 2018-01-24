@@ -42,7 +42,7 @@ class SendNotification extends Command
     public function handle()
     {
         \Log::info("was here too");
-        $session_notifications = Session::join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+        $session_notifications = Session::whereDate('s_date', new DateTime('tomorrow',new DateTimeZone('Europe/Zagreb')))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         $config = CMSConfig::first();
         foreach ($session_notifications as $session_notification) {
             if($session_notification['email']!=null) {
