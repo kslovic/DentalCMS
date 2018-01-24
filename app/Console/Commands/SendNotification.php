@@ -41,21 +41,24 @@ class SendNotification extends Command
      */
     public function handle()
     {
-        \Log::info("was here too");
-        $session_notifications = Session::whereDate('s_date', new DateTime('tomorrow',new DateTimeZone('Europe/Zagreb')))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
         $config = CMSConfig::first();
-        foreach ($session_notifications as $session_notification) {
-            if($session_notification['email']!=null) {
-                \Mail::send('email.notify', ['name' => $session_notification['name'], 'date' => $session_notification['s_date']], function ($message) use ($session_notification) {
-                    $message->to($session_notification['email'], $session_notification['name'])
-                        ->subject('Obavijest o zakazanom terminu');
-                });
-            }
-            else{
-                \Mail::send('email.callpatient', ['name' => $session_notification['name'], 'lname' => $session_notification['lname'], 'date' => $session_notification['s_date'], 'phone' => $session_notification['phone']], function ($message) use ($config) {
-                    $message->to($config->email)
-                        ->subject('Obavijest o zakazanom terminu');
-                });
+        $time = new DateTime('NOW');
+
+        if(date("H:i",strtotime($config->time))==$time->format('H:i')) {
+            \Log::info("was here too");
+            $session_notifications = Session::whereDate('s_date', new DateTime('tomorrow', new DateTimeZone('Europe/Zagreb')))->join('patients', 'sessions.patient_id', '=', 'patients.id')->get();
+            foreach ($session_notifications as $session_notification) {
+                if ($session_notification['email'] != null) {
+                    \Mail::send('email.notify', ['name' => $session_notification['name'], 'date' => $session_notification['s_date']], function ($message) use ($session_notification) {
+                        $message->to($session_notification['email'], $session_notification['name'])
+                            ->subject('Obavijest o zakazanom terminu');
+                    });
+                } else {
+                    \Mail::send('email.callpatient', ['name' => $session_notification['name'], 'lname' => $session_notification['lname'], 'date' => $session_notification['s_date'], 'phone' => $session_notification['phone']], function ($message) use ($config) {
+                        $message->to($config->email)
+                            ->subject('Obavijest o zakazanom terminu');
+                    });
+                }
             }
         }
     }
