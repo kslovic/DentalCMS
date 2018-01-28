@@ -7,9 +7,15 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-header">
-                        Dodaj novog pacijenta
-                    </h1>
+                    @if(isset($patients))
+                        <h1 class="page-header">
+                            Uredi pacijenta
+                        </h1>
+                    @else
+                        <h1 class="page-header">
+                            Dodaj novog pacijenta
+                        </h1>
+                    @endif
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i> <a href="{{url("/")}}">DentalCMS</a>
@@ -27,7 +33,11 @@
                 </div>
             </div>
             <!-- /.row -->
-
+            @if(isset($message))
+                <div class="alert alert-danger">
+                    <strong>{{$message}}</strong>
+                </div>
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">

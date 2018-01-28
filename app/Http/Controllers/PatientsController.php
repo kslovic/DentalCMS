@@ -32,6 +32,9 @@ class PatientsController extends Controller
             'lastname' => 'required',
             'phone' => 'required|digits_between:9,15',
         ]);
+        $epatient = Patient::where('email',$request->email)->get();
+        if(!$epatient->isEmpty())
+            return view('addpatient',['message'=>"Pacijent s unesenim email-om već postoji!!!"]);
         $patient = new Patient();
 
         $patient->name = $request->name;
@@ -58,6 +61,11 @@ class PatientsController extends Controller
             'lastname' => 'required',
             'phone' => 'required|digits_between:9,15',
         ]);
+        $epatient = Patient::where('id','<>',$request->id)->where('email',$request->email)->get();
+        if(!$epatient->isEmpty()) {
+            $patient = Patient::where('id',$request->id)->get();
+            return view('addpatient', ['patients'=>$patient,'message' => "Pacijent s unesenim email-om već postoji!!!"]);
+        }
         Patient::where('id',$request->id)->update(['name' => $request->name, 'lname' => $request->lastname, 'email' => $request->email, 'phone' =>$request->phone]);
         $patient = Patient::where('id',$request->id)->get();
         $sessions = Session::where('patient_id',$request->id)->get();
